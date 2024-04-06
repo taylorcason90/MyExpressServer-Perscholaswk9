@@ -4,14 +4,14 @@ import config from './config';
 async function startServer() {
     const app = express();
 
-(await import ('./loaders')).default({app});
+    (await import('./loaders')).default({app});
 
-app.listen(config.port, () => console.log(`server is runnging on port ${config.port}`))
-.on('error', error => {
-    console.log(error.message);
-    process.exit(1);  // will stop the error quickly 
-})
+    app.listen(config.app.port, () => console.log(`Server is running on port ${config.app.port}`))
+    .on('error', error => {
+        console.log(error.message);
+        process.exit(1);
+    })
 }
 
-startServer(); 
+startServer();
 
